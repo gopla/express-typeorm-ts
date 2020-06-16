@@ -4,14 +4,16 @@ import userUtils from '../api/user/user.utils'
 import { User } from '../api/user/user.entity'
 import { Post } from '../api/post/post.entity'
 
+const { DB_HOST, DB_USER, DB_PASS, DB_NAME } = process.env
+
 export async function connectDB() {
   return await createConnection({
     type: 'mysql',
-    host: 'localhost',
+    host: DB_HOST,
     port: 3306,
-    username: 'root',
-    password: '',
-    database: 'db_type',
+    username: DB_USER,
+    password: DB_PASS,
+    database: DB_NAME,
     synchronize: true,
     logging: false,
     entities: ['./build/api/**/**.entity.js'],
