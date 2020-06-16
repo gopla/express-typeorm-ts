@@ -6,6 +6,6 @@
   "password": "",
   "database": "db_type",
   "synchronize": true,
-  "logging": true,
+  "logging": false,
   "entities": ["./build/api/**/**.entity.js"]
 }

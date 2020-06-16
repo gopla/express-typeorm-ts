@@ -13,7 +13,7 @@ export async function connectTestDB() {
     dropSchema: true,
     synchronize: true,
     logging: false,
-    entities: ['./build/api/**/**.entity.js'],
+    entities: ['./src/api/**/**.entity.ts'],
   })
 }
 
