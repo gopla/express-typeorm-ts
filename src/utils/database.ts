@@ -1,9 +1,21 @@
+require('dotenv').config()
 import { createConnection, getConnection, getRepository } from 'typeorm'
 import userUtils from '../api/user/user.utils'
 import { User } from '../api/user/user.entity'
+import { Post } from '../api/post/post.entity'
 
 export async function connectDB() {
-  return await createConnection()
+  return await createConnection({
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'root',
+    password: '',
+    database: 'db_type',
+    synchronize: true,
+    logging: false,
+    entities: ['./build/api/**/**.entity.js'],
+  })
 }
 
 export async function connectTestDB() {
@@ -23,6 +35,11 @@ export async function mockingDBRecord() {
     name: 'gopla',
     username: 'gopla',
     password: hashPass,
+  })
+
+  await getRepository(Post).save({
+    userId: 1,
+    post: 'pertamax',
   })
 }
 
