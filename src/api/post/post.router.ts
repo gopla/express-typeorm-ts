@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import PostController from './post.controller'
-import { verifyToken } from '../../utils/verifyToken'
+import { verifyToken } from '../../middlewares/verifyToken'
 
 const postRouter = Router()
 const postController = new PostController()
